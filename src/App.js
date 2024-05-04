@@ -1,10 +1,10 @@
 import "./App.css";
-import Jobs from "./components/Jobs/Jobs";
+import JobsList from "./components/Jobs/JobsList";
 
 function App() {
   return (
     <div className="App">
-      <Jobs></Jobs>
+      <JobsList></JobsList>
     </div>
   );
 }

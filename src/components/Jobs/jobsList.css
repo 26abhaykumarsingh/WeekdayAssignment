@@ -1,0 +1,145 @@
+.jobs {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 50px;
+  justify-content: center;
+}
+
+.jobCard {
+  height: 550px;
+  width: 350px;
+  box-shadow: 0 0 3px 1px rgb(228, 227, 227);
+  border-radius: 20px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  font-family: "inter";
+  position: relative;
+  transition: transform 0.2s ease-in;
+}
+
+.jobCard:hover {
+  transform: scale(1.01); /* Scale the card up by 5% on hover */
+}
+
+.jobHeading {
+  display: flex;
+}
+
+.jobHeadingText {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 8px 0;
+  margin-left: 10px;
+}
+
+.jobCompany {
+  color: #8b8b9a;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.jobRole {
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.jobLocation {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.jobSalRange {
+  font-size: 14px;
+  font-weight: 300;
+  color: #4d596a;
+  margin-top: 5px;
+}
+
+.jobAbout {
+  display: flex;
+  flex-direction: column;
+  height: 56%;
+}
+
+.jobAboutTitle {
+  margin-top: 10px;
+  margin-bottom: 2px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.jobAboutText {
+  font-size: 13.5px;
+  font-weight: 350;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.jobAboutText::before {
+  content: "";
+  position: absolute;
+  height: 100px;
+  width: 100%;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent, white);
+}
+
+.jobAboutShowMore {
+  color: #5f61c3;
+  font-size: 14px;
+  font-weight: 300;
+  margin: 0 auto;
+  position: relative;
+  top: -10px;
+  cursor: no-drop;
+}
+
+.jobExp {
+  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+}
+
+.jobExpTitle {
+  color: #8b8b9a;
+  font-size: 13px;
+  font-weight: 500;
+}
+.jobMinExp {
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.applyBtn {
+  background-color: #54efc3;
+  height: 45px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 10px;
+  width: calc(100% - 40px);
+  gap: 4px;
+  cursor: no-drop;
+}
+
+.applyText {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 1180px) {
+  .jobs {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media screen and (max-width: 780px) {
+  .jobs {
+    grid-template-columns: 1fr;
+  }
+}
