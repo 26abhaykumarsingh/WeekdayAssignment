@@ -9,7 +9,7 @@ import { TextField } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import {
   selectFilteredJobs,
-  selectJobs,
+  selectAllJobs,
   updateFilteredJobs,
 } from "../Jobs/jobsSlice";
 
@@ -30,7 +30,7 @@ function Filters() {
     setCompany(e.target.value);
   };
   const handleLocationChange = (e) => {
-    console.log("locationChanged", e.target.value);
+    // console.log("locationChanged", e.target.value);
     setLocation(e.target.value);
   };
   const handleModeChange = (e) => {
@@ -43,16 +43,16 @@ function Filters() {
     setMinBasePay(e.target.value);
   };
 
-  let allJobs = useSelector(selectJobs).jdList;
-  useEffect(() => {
-    dispatch(updateFilteredJobs(allJobs));
-  }, [allJobs]);
+  let allJobs = useSelector(selectAllJobs);
+  // useEffect(() => {
+  //   dispatch(updateFilteredJobs(allJobs));
+  //   // console.log("allJobs", allJobs);
+  // }, [allJobs]);
 
   const jobs = useSelector(selectFilteredJobs);
   // updateFilteredJobs(jobs);
 
   useEffect(() => {
-    console.log("handleSearchRunning");
     let filteredResult = allJobs;
     if (minExp !== 0) {
       filteredResult = filteredResult.filter((item) => item.minExp >= minExp);
@@ -88,7 +88,7 @@ function Filters() {
         (item) => item.minJdSalary >= minBasePay
       );
     }
-    console.log("filteredResult", filteredResult);
+    // console.log("filteredResult", filteredResult);
     dispatch(updateFilteredJobs(filteredResult));
   }, [minExp, company, location, mode, role, minBasePay, allJobs]);
 

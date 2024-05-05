@@ -6,12 +6,15 @@ const initialState = {
   items: [],
   error: null,
   filteredJobs: [],
+  totalCount: 0,
+  hasMore: true,
 };
 
 export const fetchJobsAsync = createAsyncThunk(
   "jobs/fetchJobs",
   async ({ limit, offset }) => {
     const response = await fetchJobs(limit, offset);
+    // console.log("response", response);
     return response;
   }
 );
@@ -27,7 +30,9 @@ export const jobsSlice = createSlice({
       })
       .addCase(fetchJobsAsync.fulfilled, (state, action) => {
         state.status = "idle";
-        state.items = action.payload;
+        state.items.push(...action.payload.jdList);
+        state.totalCount = action.payload.totalCount;
+        state.hasMore = state.totalCount > state.items.length;
       })
       .addCase(fetchJobsAsync.rejected, (state, action) => {
         state.status = "failed";
@@ -38,13 +43,17 @@ export const jobsSlice = createSlice({
   reducers: {
     updateFilteredJobs: (state, action) => {
       state.filteredJobs = action.payload;
-      console.log("filteredjobs", action.payload);
+      // console.log("filteredjobs", action.payload);
     },
   },
 });
 
-export const selectJobs = (state) => state.jobs.items;
-export const selectFilteredJobs = (state) => state.jobs.filteredJobs;
 export const { updateFilteredJobs } = jobsSlice.actions;
+
+export const selectAllJobs = (state) => state.jobs.items;
+export const selectFilteredJobs = (state) => state.jobs.filteredJobs;
+export const selectError = (state) => state.jobs.error;
+export const selectStatus = (state) => state.jobs.status;
+export const selectHasMore = (state) => state.jobs.hasMore;
 
 export default jobsSlice.reducer;

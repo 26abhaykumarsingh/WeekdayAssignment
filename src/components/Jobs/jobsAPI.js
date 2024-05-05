@@ -19,6 +19,7 @@ export function fetchJobs(limit, offset) {
         if (!response.ok) {
           throw new Error("Failed to fetch jobs");
         }
+        console.log("apirunning");
         return response.json();
       })
       .then((result) => resolve(result))
