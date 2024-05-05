@@ -5,6 +5,7 @@ const initialState = {
   status: "idle",
   items: [],
   error: null,
+  filteredJobs: [],
 };
 
 export const fetchJobsAsync = createAsyncThunk(
@@ -33,8 +34,17 @@ export const jobsSlice = createSlice({
         state.error = action.error.message;
       });
   },
+
+  reducers: {
+    updateFilteredJobs: (state, action) => {
+      state.filteredJobs = action.payload;
+      console.log("filteredjobs", action.payload);
+    },
+  },
 });
 
 export const selectJobs = (state) => state.jobs.items;
+export const selectFilteredJobs = (state) => state.jobs.filteredJobs;
+export const { updateFilteredJobs } = jobsSlice.actions;
 
 export default jobsSlice.reducer;

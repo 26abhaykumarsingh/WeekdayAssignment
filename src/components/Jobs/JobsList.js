@@ -1,22 +1,33 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchJobsAsync, selectJobs } from "./jobsSlice";
+import {
+  fetchJobsAsync,
+  selectFilteredJobs,
+  selectJobs,
+  updateFilteredJobs,
+} from "./jobsSlice";
 import "./jobsList.css";
 import BoltIcon from "@mui/icons-material/Bolt";
 import { capitalize } from "../../app/lib";
 
 function JobsList() {
   const dispatch = useDispatch();
-  const jobs = useSelector(selectJobs);
+
   useEffect(() => {
-    dispatch(fetchJobsAsync({ limit: 10, offset: 0 }));
+    dispatch(fetchJobsAsync({ limit: 15, offset: 0 }));
   }, []);
+
+  let jobs = useSelector(selectFilteredJobs);
+
   useEffect(() => {
-    console.log(jobs);
+    console.log("jobs", jobs);
+    // let minJdSalary = [...new Set(jobs?.jdList?.map((job) => job.minJdSalary))];
+    // console.log("minJdSalary", minJdSalary);
   }, [jobs]);
+
   return (
     <div className="jobs">
-      {jobs?.jdList?.map((job) => (
+      {jobs?.map((job) => (
         <>
           <div className="jobCard">
             <div className="jobHeading">
