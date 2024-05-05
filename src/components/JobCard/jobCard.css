@@ -1,9 +1,9 @@
 .jobCard {
   height: fit-content;
   width: 350px;
-  box-shadow: 0 0 3px 1px rgb(228, 227, 227);
+  box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
-  padding: 20px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   font-family: "inter";
@@ -68,6 +68,12 @@
   font-weight: 500;
 }
 
+.jobAboutUsTitle {
+  margin-bottom: 2px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
 .jobAboutText {
   font-size: 13.5px;
   font-weight: 350;
@@ -91,7 +97,7 @@
 }
 
 .jobAboutShowMore {
-  color: #5f61c3;
+  color: #4943da;
   font-size: 14px;
   font-weight: 300;
   margin: 0 auto;
@@ -100,7 +106,7 @@
   cursor: pointer;
 }
 .jobAboutShowLess {
-  color: #5f61c3;
+  color: #4943da;
   font-size: 14px;
   font-weight: 300;
   margin: 0 auto;
@@ -121,7 +127,7 @@
   font-weight: 500;
 }
 .jobMinExp {
-  font-size: 14px;
+  font-size: 13.5px;
   font-weight: 300;
 }
 
@@ -138,6 +144,7 @@
   width: calc(100%);
   gap: 4px;
   cursor: no-drop;
+  margin-top: 3px;
 }
 
 .applyText {

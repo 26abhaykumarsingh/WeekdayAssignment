@@ -32,7 +32,7 @@ function JobsList() {
       if (status == "loading") return;
       if (observer.current) observer.current.disconnect();
       observer.current = new IntersectionObserver((entries) => {
-        if (entries[0].isIntersecting) {
+        if (entries[0].isIntersecting && hasMore) {
           setOffset((prev) => prev + limit);
         }
       });
@@ -81,6 +81,12 @@ function JobsList() {
           return <JobCard job={job} key={job.jdUid}></JobCard>;
         })}
       </div>
+      {status === "loading" && filteredJobs.length !== 0 && (
+        <div className="noJobsContainer">
+          {/* <div className="noJobsImg"></div> */}
+          <div className="noJobsText">Loading...</div>
+        </div>
+      )}
     </>
   );
 }

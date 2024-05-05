@@ -36,6 +36,7 @@ function JobCard({ job, forwardedRef }) {
       {!isAboutExpanded ? (
         <div className="jobAbout">
           <div className="jobAboutTitle">About Company:</div>
+          <div className="jobAboutUsTitle">About us</div>
           <div className="jobAboutText">{job?.jobDetailsFromCompany}</div>
           <div className="jobAboutShowMore" onClick={handleShowMoreClick}>
             Show more
