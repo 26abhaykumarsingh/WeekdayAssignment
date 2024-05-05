@@ -2,11 +2,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 20px;
+  margin-top: 20px;
+  height: fit-content;
+  width: 100%;
 }
 
 .Filters__list {
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
@@ -18,24 +21,4 @@
 
 .filter > Select {
   border: none;
-}
-
-.Filters__searchBtn {
-  font-family: "Roboto", sans-serif;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 7px;
-  height: 55px;
-  padding: 0 40px;
-  font-size: 16px;
-  font-weight: 500;
-  background-color: #7065f0;
-  color: white;
-  margin-left: 10px;
-  cursor: pointer;
-}
-
-.Filters__searchBtn:active {
-  background-color: #433c8c;
 }

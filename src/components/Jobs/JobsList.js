@@ -11,6 +11,7 @@ import {
 import "./jobsList.css";
 import BoltIcon from "@mui/icons-material/Bolt";
 import { capitalize } from "../../app/lib";
+import JobCard from "../JobCard/JobCard";
 
 function JobsList() {
   const [limit, setLimit] = useState(15);
@@ -18,7 +19,6 @@ function JobsList() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchJobsAsync({ limit: limit, offset: offset }));
-    console.log("fetchJobsAsyncRunning");
   }, [offset]);
 
   let hasMore = useSelector(selectHasMore);
@@ -34,18 +34,16 @@ function JobsList() {
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting) {
           setOffset((prev) => prev + limit);
-          console.log("Visible");
         }
       });
       if (node) observer.current.observe(node);
-      console.log(node);
     },
     [status, hasMore]
   );
 
-  useEffect(() => {
-    console.log("status", status);
-  }, [status]);
+  // useEffect(() => {
+  //   console.log("status", status);
+  // }, [status]);
 
   let filteredJobs = useSelector(selectFilteredJobs);
 
@@ -57,7 +55,13 @@ function JobsList() {
 
   return (
     <>
-      {filteredJobs.length === 0 && (
+      {status === "loading" && filteredJobs.length === 0 && (
+        <div className="noJobsContainer">
+          <div className="loadingImg"></div>
+          <div className="noJobsText">Loading...</div>
+        </div>
+      )}
+      {status === "idle" && filteredJobs.length === 0 && (
         <div className="noJobsContainer">
           <div className="noJobsImg"></div>
           <div className="noJobsText">No jobs available for this query</div>
@@ -67,96 +71,14 @@ function JobsList() {
         {filteredJobs?.map((job, index) => {
           if (filteredJobs.length === index + 1) {
             return (
-              <div ref={lastJobRef} className="jobCard">
-                <div className="jobHeading">
-                  <div className="jobLogo">
-                    <img
-                      src={job.logoUrl}
-                      alt=""
-                      style={{
-                        width: "80px",
-                        height: "80px",
-                        borderRadius: "3px",
-                      }}
-                    />
-                  </div>
-                  <div className="jobHeadingText">
-                    <div className="jobCompany">
-                      {capitalize(job.companyName)}
-                    </div>
-                    <div className="jobRole">{capitalize(job.jobRole)}</div>
-                    <div className="jobLocation">
-                      {capitalize(job.location)}
-                    </div>
-                  </div>
-                </div>
-                <div className="jobSalRange">
-                  Estimated Salary: ${job.minJdSalary ? job.minJdSalary : "??"}{" "}
-                  - {job.maxJdSalary ? job.maxJdSalary : "??"}
-                </div>
-                <div className="jobAbout">
-                  <div className="jobAboutTitle">About Company:</div>
-                  <div className="jobAboutText">
-                    {job.jobDetailsFromCompany}
-                  </div>
-                  <div className="jobAboutShowMore">Show more</div>
-                </div>
-                {job.minExp && (
-                  <div className="jobExp">
-                    <div className="jobExpTitle">Minimum Experience</div>
-                    <div className="jobMinExp">{job.minExp} years</div>
-                  </div>
-                )}
-                <div className="applyBtn">
-                  <BoltIcon style={{ color: "orange" }} />
-                  <div className="applyText">Easy Apply</div>
-                </div>
-              </div>
+              <JobCard
+                forwardedRef={lastJobRef}
+                key={job.jdUid}
+                job={job}
+              ></JobCard>
             );
           }
-          return (
-            <div className="jobCard">
-              <div className="jobHeading">
-                <div className="jobLogo">
-                  <img
-                    src={job.logoUrl}
-                    alt=""
-                    style={{
-                      width: "80px",
-                      height: "80px",
-                      borderRadius: "3px",
-                    }}
-                  />
-                </div>
-                <div className="jobHeadingText">
-                  <div className="jobCompany">
-                    {capitalize(job.companyName)}
-                  </div>
-                  <div className="jobRole">{capitalize(job.jobRole)}</div>
-                  <div className="jobLocation">{capitalize(job.location)}</div>
-                </div>
-              </div>
-              <div className="jobSalRange">
-                Estimated Salary: ${job.minJdSalary ? job.minJdSalary : "??"} -{" "}
-                {job.maxJdSalary ? job.maxJdSalary : "??"}
-              </div>
-              <div className="jobAbout">
-                <div className="jobAboutTitle">About Company:</div>
-                <div className="jobAboutText">{job.jobDetailsFromCompany}</div>
-                <div className="jobAboutShowMore">Show more</div>
-              </div>
-              {job.minExp && (
-                <div className="jobExp">
-                  <div className="jobExpTitle">Minimum Experience</div>
-                  <div className="jobMinExp">{job.minExp} years</div>
-                </div>
-              )}
-              <div className="applyBtn">
-                <BoltIcon style={{ color: "orange" }} />
-                <div className="applyText">Easy Apply</div>
-              </div>
-            </div>
-          );
+          return <JobCard job={job} key={job.jdUid}></JobCard>;
         })}
       </div>
     </>
