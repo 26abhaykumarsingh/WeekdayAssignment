@@ -5,6 +5,7 @@ import {
   selectFilteredJobs,
   selectStatus,
   selectHasMore,
+  selectError,
 } from "./jobsSlice";
 import "./jobsList.css";
 import JobCard from "../JobCard/JobCard";
@@ -45,6 +46,7 @@ function JobsList() {
   // }, [status]);
 
   let filteredJobs = useSelector(selectFilteredJobs);
+  let error = useSelector(selectError);
 
   useEffect(() => {
     console.log("filteredJobs", filteredJobs);
@@ -54,6 +56,12 @@ function JobsList() {
 
   return (
     <>
+      {status === "idle" && filteredJobs.length === 0 && error != null && (
+        <div className="noJobsContainer">
+          <div className="errorImg"></div>
+          <div className="noJobsText">Some error occured</div>
+        </div>
+      )}
       {status === "loading" && filteredJobs.length === 0 && (
         <div className="noJobsContainer">
           <div className="loadingImg"></div>

@@ -37,6 +37,14 @@
   background-size: cover;
 }
 
+.errorImg {
+  width: 300px;
+  height: 550px;
+  background: url(https://media.istockphoto.com/id/157593091/photo/baby-kitten-laying-on-top-of-a-white-sign.jpg?b=1&s=612x612&w=0&k=20&c=zcQg6JtlEZuJyq6Mr2Ty96pyUvgA2J1XB4FbSHe0Ckg=);
+  background-position: center;
+  background-size: cover;
+}
+
 .noJobsText {
   font-size: 40px;
   color: rgba(0, 0, 0, 0.415);

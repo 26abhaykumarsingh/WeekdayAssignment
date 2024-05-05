@@ -27,12 +27,14 @@ export const jobsSlice = createSlice({
     builder
       .addCase(fetchJobsAsync.pending, (state) => {
         state.status = "loading";
+        state.error = null;
       })
       .addCase(fetchJobsAsync.fulfilled, (state, action) => {
         state.status = "idle";
         state.items.push(...action.payload.jdList);
         state.totalCount = action.payload.totalCount;
         state.hasMore = state.totalCount > state.items.length;
+        state.error = null;
       })
       .addCase(fetchJobsAsync.rejected, (state, action) => {
         state.status = "failed";
