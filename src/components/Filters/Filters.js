@@ -18,6 +18,7 @@ import { capitalize } from "../../app/lib";
 function Filters() {
   const dispatch = useDispatch();
 
+  //states
   const [minExp, setMinExp] = useState(0);
   const [company, setCompany] = useState("");
   const [location, setLocation] = useState("");
@@ -25,6 +26,7 @@ function Filters() {
   const [roles, setRoles] = useState([]);
   const [minBasePay, setMinBasePay] = useState(0);
 
+  //handlers
   const handleMinExpChange = (e) => {
     setMinExp(e.target.value);
   };
@@ -43,7 +45,6 @@ function Filters() {
     setRoles(selectedRoles);
     console.log(selectedRoles);
   };
-
   const handleMinBasePayChange = (e) => {
     setMinBasePay(e.target.value);
   };
@@ -54,13 +55,14 @@ function Filters() {
   //   // console.log("allJobs", allJobs);
   // }, [allJobs]);
 
-  const jobs = useSelector(selectFilteredJobs);
+  // const jobs = useSelector(selectFilteredJobs);
   // updateFilteredJobs(jobs);
 
   // useEffect(() => {
   //   console.log("roles", roles);
   // }, [roles]);
 
+  //Filtering logic, runs whenever any filter state change
   useEffect(() => {
     let filteredResult = allJobs;
     if (minExp !== 0) {
@@ -103,7 +105,7 @@ function Filters() {
       );
     }
     // console.log("filteredResult", filteredResult);
-    dispatch(updateFilteredJobs(filteredResult));
+    dispatch(updateFilteredJobs(filteredResult)); //update filteredJobs
   }, [minExp, company, location, mode, roles, minBasePay, allJobs]);
 
   return (

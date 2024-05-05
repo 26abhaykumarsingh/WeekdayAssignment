@@ -5,9 +5,9 @@ const initialState = {
   status: "idle",
   items: [],
   error: null,
-  filteredJobs: [],
+  filteredJobs: [], //filteredJobs are filtered out jobs
   totalCount: 0,
-  hasMore: true,
+  hasMore: true, //hasMore tells us if more jobs are available
 };
 
 export const fetchJobsAsync = createAsyncThunk(

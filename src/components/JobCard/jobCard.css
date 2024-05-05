@@ -3,16 +3,17 @@
   width: 350px;
   box-shadow: 0 0 3px 1px rgba(0, 0, 0, 0.2);
   border-radius: 20px;
-  padding: 24px;
+  padding: 22px;
   display: flex;
   flex-direction: column;
   font-family: "inter";
   position: relative;
-  transition: transform 0.2s ease-in;
+  /* transition: transform 0.2s ease-in; */
 }
 
 .jobCard:hover {
-  transform: scale(1.01); /* Scale the card up by 5% on hover */
+  transition: all 0.2s ease-in-out;
+  transform: scale(1.01);
 }
 
 .jobHeading {

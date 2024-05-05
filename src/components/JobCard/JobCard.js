@@ -6,9 +6,11 @@ import "./jobCard.css";
 function JobCard({ job, forwardedRef }) {
   const [isAboutExpanded, setIsAboutExpanded] = useState(false);
   const handleShowMoreClick = () => {
+    //toggler for about section expansion
     const temp = isAboutExpanded;
     setIsAboutExpanded(!temp);
   };
+
   return (
     <div className="jobCard" ref={forwardedRef}>
       <div className="jobHeading">
