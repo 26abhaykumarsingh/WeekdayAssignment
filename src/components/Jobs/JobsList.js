@@ -56,11 +56,66 @@ function JobsList() {
   }, [filteredJobs]);
 
   return (
-    <div className="jobs">
-      {filteredJobs?.map((job, index) => {
-        if (filteredJobs.length === index + 1) {
+    <>
+      {filteredJobs.length === 0 && (
+        <div className="noJobsContainer">
+          <div className="noJobsImg"></div>
+          <div className="noJobsText">No jobs available for this query</div>
+        </div>
+      )}
+      <div className="jobs">
+        {filteredJobs?.map((job, index) => {
+          if (filteredJobs.length === index + 1) {
+            return (
+              <div ref={lastJobRef} className="jobCard">
+                <div className="jobHeading">
+                  <div className="jobLogo">
+                    <img
+                      src={job.logoUrl}
+                      alt=""
+                      style={{
+                        width: "80px",
+                        height: "80px",
+                        borderRadius: "3px",
+                      }}
+                    />
+                  </div>
+                  <div className="jobHeadingText">
+                    <div className="jobCompany">
+                      {capitalize(job.companyName)}
+                    </div>
+                    <div className="jobRole">{capitalize(job.jobRole)}</div>
+                    <div className="jobLocation">
+                      {capitalize(job.location)}
+                    </div>
+                  </div>
+                </div>
+                <div className="jobSalRange">
+                  Estimated Salary: ${job.minJdSalary ? job.minJdSalary : "??"}{" "}
+                  - {job.maxJdSalary ? job.maxJdSalary : "??"}
+                </div>
+                <div className="jobAbout">
+                  <div className="jobAboutTitle">About Company:</div>
+                  <div className="jobAboutText">
+                    {job.jobDetailsFromCompany}
+                  </div>
+                  <div className="jobAboutShowMore">Show more</div>
+                </div>
+                {job.minExp && (
+                  <div className="jobExp">
+                    <div className="jobExpTitle">Minimum Experience</div>
+                    <div className="jobMinExp">{job.minExp} years</div>
+                  </div>
+                )}
+                <div className="applyBtn">
+                  <BoltIcon style={{ color: "orange" }} />
+                  <div className="applyText">Easy Apply</div>
+                </div>
+              </div>
+            );
+          }
           return (
-            <div ref={lastJobRef} className="jobCard">
+            <div className="jobCard">
               <div className="jobHeading">
                 <div className="jobLogo">
                   <img
@@ -102,50 +157,9 @@ function JobsList() {
               </div>
             </div>
           );
-        }
-        return (
-          <div className="jobCard">
-            <div className="jobHeading">
-              <div className="jobLogo">
-                <img
-                  src={job.logoUrl}
-                  alt=""
-                  style={{
-                    width: "80px",
-                    height: "80px",
-                    borderRadius: "3px",
-                  }}
-                />
-              </div>
-              <div className="jobHeadingText">
-                <div className="jobCompany">{capitalize(job.companyName)}</div>
-                <div className="jobRole">{capitalize(job.jobRole)}</div>
-                <div className="jobLocation">{capitalize(job.location)}</div>
-              </div>
-            </div>
-            <div className="jobSalRange">
-              Estimated Salary: ${job.minJdSalary ? job.minJdSalary : "??"} -{" "}
-              {job.maxJdSalary ? job.maxJdSalary : "??"}
-            </div>
-            <div className="jobAbout">
-              <div className="jobAboutTitle">About Company:</div>
-              <div className="jobAboutText">{job.jobDetailsFromCompany}</div>
-              <div className="jobAboutShowMore">Show more</div>
-            </div>
-            {job.minExp && (
-              <div className="jobExp">
-                <div className="jobExpTitle">Minimum Experience</div>
-                <div className="jobMinExp">{job.minExp} years</div>
-              </div>
-            )}
-            <div className="applyBtn">
-              <BoltIcon style={{ color: "orange" }} />
-              <div className="applyText">Easy Apply</div>
-            </div>
-          </div>
-        );
-      })}
-    </div>
+        })}
+      </div>
+    </>
   );
 }
 
