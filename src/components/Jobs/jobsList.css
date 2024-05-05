@@ -7,16 +7,18 @@
   grid-template-rows: masonry;
   gap: 50px;
   justify-content: center;
+  padding: 0 170px;
 }
 
 .noJobsContainer {
   width: 100%;
   height: 70vh;
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   align-items: center;
   justify-content: center;
   margin-top: 40px;
+  gap: 20px;
 }
 
 .noJobsImg {
@@ -38,6 +40,8 @@
 .noJobsText {
   font-size: 40px;
   color: rgba(0, 0, 0, 0.415);
+  position: relative;
+  top: -20px;
 }
 
 @media screen and (max-width: 1180px) {

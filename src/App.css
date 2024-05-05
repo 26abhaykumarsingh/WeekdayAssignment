@@ -8,12 +8,8 @@
 }
 
 .App {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: auto;
-  margin: 10px 170px;
-}
-
-@media screen and (max-width: 780px) {
-  .App {
-    margin: 10px 50px;
-  }
 }

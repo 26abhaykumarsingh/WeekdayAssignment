@@ -1,0 +1,44 @@
+.Header {
+  width: 100%;
+  overflow-x: hidden;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 150px;
+  padding-right: 150px;
+  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.097);
+}
+
+.weekdayLogo {
+  background: url(https://assets-global.website-files.com/63359abeb97bf0d5ca346052/6336e2cc37e3c15b9c7c4487_Logo_new.png);
+  width: 200px;
+  height: 42px;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.blackBox {
+  height: 55px;
+  padding: 0 20px;
+  width: 250px;
+  border-radius: 50px;
+  background-color: black;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  cursor: no-drop;
+}
+
+@media screen and (max-width: 780px) {
+  .blackBox {
+    display: none;
+  }
+  .Header {
+    justify-content: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
