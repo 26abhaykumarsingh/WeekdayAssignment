@@ -47,6 +47,7 @@ function JobCard({ job, forwardedRef }) {
       ) : (
         <div className="jobAboutExpanded">
           <div className="jobAboutTitle">About Company:</div>
+          <div className="jobAboutUsTitle">About us</div>
           <div className="jobAboutTextExpanded">
             {job?.jobDetailsFromCompany}
           </div>

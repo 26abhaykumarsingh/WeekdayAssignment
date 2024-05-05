@@ -12,7 +12,7 @@ import {
   selectAllJobs,
   updateFilteredJobs,
 } from "../Jobs/jobsSlice";
-import { jobRolesOptions } from "../../data";
+import { companyNamesOptions, jobRolesOptions } from "../../data";
 import { capitalize } from "../../app/lib";
 
 function Filters() {
@@ -30,8 +30,13 @@ function Filters() {
   const handleMinExpChange = (e) => {
     setMinExp(e.target.value);
   };
-  const handleCompanyChange = (e) => {
-    setCompany(e.target.value);
+  const handleCompanyChange = (e, value) => {
+    if (!value || value.length == 0) {
+      setCompany("");
+    } else {
+      setCompany(value);
+    }
+    // console.log("company", value);
   };
   const handleLocationChange = (e) => {
     // console.log("locationChanged", e.target.value);
@@ -70,7 +75,7 @@ function Filters() {
     }
     if (company !== "") {
       filteredResult = filteredResult.filter(
-        (item) => item.companyName.toLowerCase() == company.toLowerCase()
+        (item) => item?.companyName?.toLowerCase() == company?.toLowerCase()
       );
     }
     if (location !== "") {
@@ -199,13 +204,28 @@ function Filters() {
             />
           </div>
         </div>
-        <div className="filter">
+        {/* <div className="filter">
           <div style={{ width: "120px" }}>
             <TextField
               label="Company"
               id="outlined-size-small"
               size="small"
               onChange={(e) => handleCompanyChange(e)}
+            />
+          </div>
+        </div> */}
+        <div className="filter">
+          <div style={{ width: "120px" }}>
+            <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              options={companyNamesOptions}
+              sx={{ minWidth: 150 }}
+              size="small"
+              onChange={handleCompanyChange}
+              renderInput={(params) => (
+                <TextField {...params} label="Company" />
+              )}
             />
           </div>
         </div>
