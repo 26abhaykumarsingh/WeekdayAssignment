@@ -2,6 +2,10 @@
 
 This is an assignment submission for the Frontend Developer role at Weekday.
 
+## Deployed link
+
+https://weekday-assignment-mu.vercel.app/
+
 ## Description
 
 This project fetches job data from an API and renders the job posts with Infinite Scrolling and Filters.
