@@ -2,6 +2,10 @@
 
 This is an assignment submission for the Frontend Developer role at Weekday.
 
+## Deployed link
+
+https://weekday-assignment-mu.vercel.app/
+
 ## Description
 
 This project fetches job data from an API and renders the job posts with Infinite Scrolling and Filters.
@@ -20,6 +24,7 @@ To get started, follow these steps:
 Once the project is running, you can navigate to the application in your browser. Here are some key features:
 
 Infinite Scrolling: Scroll through the job posts endlessly as new posts load automatically.
+
 Filters: Use the filter options to narrow down the job posts based on various criteria such as Roles, Minimum Experience, Location, Mode, Minimum Base Pay, Company.
 
 ## Technology Stack
