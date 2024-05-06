@@ -61,4 +61,10 @@
   .jobs {
     grid-template-columns: 1fr;
   }
+  .noJobsContainer {
+    flex-direction: column;
+  }
+  .noJobsText {
+    padding: 0 15px;
+  }
 }
