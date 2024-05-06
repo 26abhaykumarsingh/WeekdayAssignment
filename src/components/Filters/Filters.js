@@ -119,7 +119,11 @@ function Filters() {
         <div className="filter">
           <div style={{ minWidth: "150px" }}>
             <Autocomplete
-              sx={{ m: 1, minWidth: 150 }}
+              sx={{
+                m: 1,
+                minWidth: 150,
+                "@media (max-width: 780px)": { width: "220px" },
+              }}
               size="small"
               multiple
               options={jobRolesOptions}
@@ -146,13 +150,25 @@ function Filters() {
               id="outlined-size-small"
               size="small"
               onChange={(e) => handleMinExpChange(e)}
+              sx={{
+                m: 1,
+                minWidth: 120,
+                "@media (max-width: 780px)": { width: "220px" },
+              }}
             />
           </div>
         </div>
 
         <div className="filter">
           <Box>
-            <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+            <FormControl
+              sx={{
+                m: 1,
+                minWidth: 120,
+                "@media (max-width: 780px)": { width: "220px" },
+              }}
+              size="small"
+            >
               <InputLabel id="demo-select-small-label">Location</InputLabel>
               <Select
                 labelId="demo-select-small-label"
@@ -174,7 +190,14 @@ function Filters() {
         </div>
         <div className="filter">
           <Box>
-            <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+            <FormControl
+              sx={{
+                m: 1,
+                minWidth: 120,
+                "@media (max-width: 780px)": { width: "220px" },
+              }}
+              size="small"
+            >
               <InputLabel id="demo-select-small-label">Mode</InputLabel>
               <Select
                 labelId="demo-select-small-label"
@@ -194,13 +217,18 @@ function Filters() {
         </div>
 
         <div className="filter">
-          <div style={{ minWidth: "150px" }}>
+          <div>
             <TextField
               type="number"
               label="Minimum Base Pay"
               id="outlined-size-small"
               size="small"
               onChange={handleMinBasePayChange}
+              sx={{
+                m: 1,
+                minWidth: 150,
+                "@media (max-width: 780px)": { width: "220px" },
+              }}
             />
           </div>
         </div>
@@ -215,12 +243,16 @@ function Filters() {
           </div>
         </div> */}
         <div className="filter">
-          <div style={{ width: "120px" }}>
+          <div>
             <Autocomplete
               disablePortal
               id="combo-box-demo"
               options={companyNamesOptions}
-              sx={{ minWidth: 150 }}
+              sx={{
+                m: 1,
+                minWidth: 150,
+                "@media (max-width: 780px)": { width: "220px" },
+              }}
               size="small"
               onChange={handleCompanyChange}
               renderInput={(params) => (
